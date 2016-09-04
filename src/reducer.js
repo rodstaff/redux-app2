@@ -1,5 +1,4 @@
-//import 'babel-polyfill';  
-import {combineReducers, createStore} from 'redux'
+ import {combineReducers, createStore} from 'redux'
 
 const userReducer = (state={}, action) => {
   switch(action.type) {
@@ -32,4 +31,9 @@ store.subscribe( () => {
 store.dispatch({type:  "CHANGE_NAME", payload: "Bucky"})
 store.dispatch({type:  "CHANGE_AGE", payload: 23})
 store.dispatch({type:  "CHANGE_AGE", payload: 27})
+// store.dispatch({type:  "INC", payload: 1})
+// store.dispatch({type:  "INC", payload: 12})
+// store.dispatch({type:  "DEC", payload: 25})
+// store.dispatch({type:  "DEC", payload: 14})
+
 

@@ -17,7 +17,7 @@ const reducer = (state=initialState, action) => {
       return {...state, fetching: true}
       break;
     }
-    case "fetch_users_error": {
+    case "FETCH_USERS_ERROR": {
       return {...state, fetching: false, error: action.payload}
       break;
     }
@@ -37,13 +37,14 @@ store.dispatch({
   type: "FETCH_USERS",
   payload: axios.get("http://rest.learncode.academy/api/wstern/users")
 })
+// Use below in case of 'thunk' middleware:
 // store.dispatch((dispatch) => {
-//   dispatch({type:  "fetch_users_start"})
+//   dispatch({type:  "FETCH_USERS_START"})
 //   axios.get("http://rest.learncode.academy/api/wstern/users")
 //     .then((response) => {
-//       dispatch({type:  "receive_users", payload: response.data})
+//       dispatch({type:  "RECEIVE_USERS", payload: response.data})
 //     })
 //     .catch((err) => {
-//       dispatch({type: "fetch_users_error", payload: err})
+//       dispatch({type: "FETCH_USERS_ERROR", payload: err})
 //     })
 // })
