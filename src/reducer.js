@@ -1,6 +1,7 @@
  import {combineReducers, createStore} from 'redux'
 
-const userReducer = (state={}, action) => {
+var num = 10
+const userReducer = (state={initialState: num}, action) => {
   switch(action.type) {
   	case "CHANGE_NAME": {
   	  state = {...state, name: action.payload}
@@ -10,6 +11,14 @@ const userReducer = (state={}, action) => {
   	  state = {...state, age: action.payload}
   	  break;
   	}
+    case "INC": {
+      state = {...state, initialState:  num=num+action.payload}
+      break;
+    }
+    case "DEC": {
+      state = {...state, initialState: num=num-action.payload}
+      break;
+    }
   }
   return state;
 };
@@ -31,9 +40,9 @@ store.subscribe( () => {
 store.dispatch({type:  "CHANGE_NAME", payload: "Bucky"})
 store.dispatch({type:  "CHANGE_AGE", payload: 23})
 store.dispatch({type:  "CHANGE_AGE", payload: 27})
-// store.dispatch({type:  "INC", payload: 1})
-// store.dispatch({type:  "INC", payload: 12})
-// store.dispatch({type:  "DEC", payload: 25})
-// store.dispatch({type:  "DEC", payload: 14})
+store.dispatch({type:  "INC", payload: 1})
+store.dispatch({type:  "INC", payload: 10})
+store.dispatch({type:  "DEC", payload: 1})
+store.dispatch({type:  "DEC", payload: 10})
 
 

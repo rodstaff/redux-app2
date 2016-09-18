@@ -1,6 +1,8 @@
 
 module.exports = {
-  entry: './src/async.js',
+  //entry: './src/async',
+  //entry: './src/middlew',
+  entry: './src/reducer',
   // output: {
   // path: 
   // // filename: 'bundle.js'

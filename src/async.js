@@ -33,18 +33,19 @@ const middleware = applyMiddleware(promise(), thunk, logger())
 
 const store = createStore(reducer, middleware)
 
-store.dispatch({
-  type: "FETCH_USERS",
-  payload: axios.get("http://rest.learncode.academy/api/wstern/users")
-})
-// Use below in case of 'thunk' middleware:
-// store.dispatch((dispatch) => {
-//   dispatch({type:  "FETCH_USERS_START"})
-//   axios.get("http://rest.learncode.academy/api/wstern/users")
-//     .then((response) => {
-//       dispatch({type:  "RECEIVE_USERS", payload: response.data})
-//     })
-//     .catch((err) => {
-//       dispatch({type: "FETCH_USERS_ERROR", payload: err})
-//     })
+// store.dispatch({
+//   type: "FETCH_USERS",
+//   payload: axios.get("http://rest.learncode.academy/api/wstern/users")
 // })
+
+//Use below in case of 'thunk' middleware:
+store.dispatch((dispatch) => {
+  dispatch({type:  "FETCH_USERS_START"})
+  axios.get("http://rest.learncode.academy/api/wstern/users")
+    .then((response) => {
+      dispatch({type:  "RECEIVE_USERS", payload: response.data})
+    })
+    .catch((err) => {
+      dispatch({type: "FETCH_USERS_ERROR", payload: err})
+    })
+})
