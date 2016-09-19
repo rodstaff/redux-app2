@@ -1,6 +1,6 @@
  import {combineReducers, createStore} from 'redux'
 
-var num = 10
+var num = 10  // if const = 10, will return 'error' because 'num' will change below!!!
 const userReducer = (state={initialState: num}, action) => {
   switch(action.type) {
   	case "CHANGE_NAME": {
